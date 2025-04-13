@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://kit.fontawesome.com/660d3ed2ac.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="static/styles.css">
+    <title>Aeroglobe | Laura Jacobsen</title>
+</head>
+<body>
+    <div>
+        <a href="index.html"><i class="fa-solid fa-chevron-left fa-xl backbtn"></i></a>
+    </div>
+    <section class="text-center m-auto py-8" x-data="{ activeImage: 1, showMore: false }">
+        <h1 class="title text-vibrantgreen text-4xl mb-4">Aeroglobe</h1>
+        <p class="text-lightblue mb-8 w-9/12 md:w-1/2 m-auto overflow-hidden md:overflow-visible" :class="{'max-h-56': !showMore, 'md:max-h-full': true}">
+            Aeroglobe is a fictional company I came up with for my security exam project, where I aimed to build a secure website in PHP.
+            During the process I focused on security from start til the end, in order to avoid
+            adding a weak level of security as a last addition. I found the project very fun and it was very interesting to learn about
+            the different attacks, such as SQL injection, CSRF and DDos etc. With PHP there is a saying that it is a more insecure language and therefore
+            I found it interesting to research some of the inbuild options of securing a website built in php. Given PHP's reputation for potential vulnerabilities,
+            I delved into its built-in security features, emphasizing the necessity of utilizing up-to-date PHP versions equipped with enhanced security tools.
+            Additionally, I also looked at important factors such as HTTP and HTTPS in order to secure requests between the server and the client.
+            But also aquired knowledge about topics such as the three pillars of security and structural security.
+            Some of the methods I used for securing the website was by using prepared statements, validate and sanitize user input,
+            hashing passwords and securing sessions and file uploads.
+            Lastly I made sure to check the level of security during the process, with the help of Snyk, a testing tool.
+        </p>
+        <!--Button to see more text on mobile-->
+        <button class="text-vibrantgreen pb-6 md:hidden" @click="showMore = !showMore">
+            <span x-text="showMore ? 'See Less' : 'See More'"></span>
+        </button>
+        <!-- Buttons for changing the image -->
+        <div class="flex flex-row justify-center gap-4 pb-6">
+            <button class="rounded-full h-3 w-3 focus:outline-none" :class="{ 'bg-vibrantgreen': activeImage === 1, 'bg-darkgrey': activeImage !== 1 }" @click="activeImage = 1"></button>
+            <button class="rounded-full h-3 w-3 focus:outline-none" :class="{ 'bg-vibrantgreen': activeImage === 2, 'bg-darkgrey': activeImage !== 2 }" @click="activeImage = 2"></button>
+        </div>
+        <div class="flex flex-wrap justify-center items-center px-4 md:w-2/5 md:px-0 mx-auto">
+            <div class="w-full md:flex md:items-center m-auto">
+                <div>
+                    <!-- Images that change when buttons are clicked -->
+                    <img x-show="activeImage === 1" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" src="static/projects/aeroglobe_logo_shwd.png" alt="img" class="rounded">
+                    <img x-show="activeImage === 2" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" src="static/projects/php_methods.png" alt="img" class="rounded">
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

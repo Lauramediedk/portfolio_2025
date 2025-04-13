@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://kit.fontawesome.com/660d3ed2ac.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="static/styles.css">
+    <title>Echelon | Laura Jacobsen</title>
+</head>
+<body>
+    <div>
+        <a href="index.html"><i class="fa-solid fa-chevron-left fa-xl backbtn"></i></a>
+    </div>
+    <section class="text-center m-auto py-8" x-data="{ activeImage: 1, showMore: false }">
+        <h1 class="title text-vibrantgreen text-4xl mb-8">Echelon salon</h1>
+        <a target="_blank" href="https://echelon-salon.dk/" class="text-vibrantgreen border-2 rounded px-4 py-2">See it here</a>
+        <p class="text-lightblue my-8 w-9/12 md:w-1/2 m-auto" :class="{'max-h-56 overflow-hidden': !showMore, 'max-h-full': showMore}">
+            Echelon salon is a hair salon located in Copenhagen. They were in need of a website in order to be able
+            to stand out, and attract more attention. Through the whole process I worked closely together with the
+            owner of echelon, and we decided on a calm and warm look for the website, which should match the feeling of the salon.
+            The website is built from scratch in HTML, CSS and Javascript and is one of my earlier projects, and here I learned a lot
+            from the process as I also worked with a SEO expert. He enlightened me about his methods, and gave me an insight into the importance of SEO.
+            <br><br>
+            Feel free to check out the website by clicking the button
+        </p>
+        <!--Button to see more text on mobile-->
+        <button class="md:hidden text-vibrantgreen pb-6" @click="showMore = !showMore">
+            <span x-text="showMore ? 'See Less' : 'See More'"></span>
+        </button>
+        <!-- Buttons for changing the image -->
+        <div class="flex flex-row justify-center gap-4 pb-6">
+            <button class="rounded-full h-3 w-3 focus:outline-none" :class="{ 'bg-vibrantgreen': activeImage === 1, 'bg-darkgrey': activeImage !== 1 }" @click="activeImage = 1"></button>
+            <button class="rounded-full h-3 w-3 focus:outline-none" :class="{ 'bg-vibrantgreen': activeImage === 2, 'bg-darkgrey': activeImage !== 2 }" @click="activeImage = 2"></button>
+        </div>
+        <div class="flex flex-wrap justify-center items-center md:w-2/5 mx-auto">
+            <div class="w-full md:flex md:items-center m-auto">
+                <div>
+                    <!-- Images that change when buttons are clicked -->
+                    <img x-show="activeImage === 1" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" src="static/projects/echelon_sm_nobg.png" alt="BikeMate Feature 1" class="rounded">
+                    <img x-show="activeImage === 2" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" src="static/projects/echelon_md_nobg.png" alt="BikeMate Feature 2" class="rounded">
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

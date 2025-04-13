@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://kit.fontawesome.com/660d3ed2ac.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="static/styles.css">
+    <title>Laura Jacobsen | Webdesign & development</title>
+</head>
+<body>
+
+    <!--Hero-->
+    <section class="bg-hero h-screen relative overflow-hidden" x-data="{ mouseX: 0, mouseY: 0, circleDiameter: 100, isMouseWithin: false }"
+    @mousemove.window="mouseX = Math.min($event.clientX - circleDiameter / 2, window.innerWidth - circleDiameter);
+    mouseY = Math.min($event.clientY - circleDiameter / 2, window.innerHeight - circleDiameter);
+    isMouseWithin = true"
+    @mouseleave="isMouseWithin = false">
+    <div x-show="isMouseWithin" :style="'top:' + mouseY + 'px; left:' + mouseX + 'px'"
+    class="mouse_effect w-100 h-100">
+        </div>
+        <nav id="navbar" class="flex items-center
+        justify-between px-5">
+            <div class="flex-initial pt-2">
+                <a href="#navbar">
+                    <h1 class="subtitle text-white">Laura Jacobsen</h1>
+                </a>
+            </div>
+            <!--Menu content-->
+            <div class="flex gap-3">
+                <a href="assets/laura_cv_2024.pdf" class="links_icon subtitle hover:underline"
+                download="webdev_resume">Resume</a>
+                <div>
+                    <a target="_blank" class="links" href="https://github.com/Lauramediedk">
+                        <i class="fa-brands fa-github fa-xl links_icon"></i>
+                    </a>
+                    <a target="_blank" class="links" href="https://www.linkedin.com/in/laura-jacobsen-811461198/">
+                        <i class="fa-brands fa-linkedin fa-xl links_icon"></i>
+                    </a>
+                    <a target="_blank" class="links" href="https://www.behance.net/laurajacobsen">
+                        <i class="fa-brands fa-behance fa-xl links_icon"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <main class="flex flex-col md:flex-row
+            items-center justify-center h-full px-8 gap-40">
+            <div class="md:max-w-md" x-data="{
+                text: '',
+                textArray: ['Hi I\'m Laura!'],
+                textIndex: 0,
+                charIndex: 0,
+                typeSpeed: 100
+            }"
+            x-init="setInterval(function() {
+                let current = $data.textArray[$data.textIndex];
+                $data.text = current.substring(0, $data.charIndex);
+                $data.charIndex += 1;
+            }, $data.typeSpeed);">
+                <h1 class="text-white title py-1" x-text="text"></h1>
+                <h2 class="text-vibrantgreen subtitle">
+                    A frontend-focused Web Developer with an interest in digital design.
+                </h2>
+                <br>
+                <p class="text-lightblue pb-8 bodytext">
+                    I strive to create intuitive and user-friendly digital solutions.
+                    Through education and internships I've aquired skills in programming, databases,
+                    software quality assurance and more.
+                </p>
+                <!--Button to scroll to the skills section-->
+                <a href="#skills" class="border-blue-800 rounded
+                hover:text-vibrantgreen text-white font-medium text-lg
+                border-2 px-4 py-2 transition font-Oswald">
+                    See more
+                </a>
+            </div>
+            <!--Hero image-->
+            <div class="relative group">
+                <!-- Original image -->
+                <img src="static/green_circle_color-Photoroom_trans.png"
+                    class="hidden lg:inline max-w-sm transition duration-300 ease-in-out group-hover:opacity-0"
+                    alt="Original image">
+                <!-- Hover image -->
+                <img src="static/green_circle_color_outline-Photoroom.png"
+                    class="hidden lg:inline max-w-sm transition duration-300 ease-in-out absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100"
+                    alt="Hover image">
+            </div>
+        </main>
+        <!--Scroll arrow-->
+        <a href="#portfolio" class="absolute bottom-5 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fa-solid fa-angle-down fa-2xl
+            text-white hover:text-vibrantgreen transition"></i>
+        </a>
+    </section>
+
+    <!--Portfolio-->
+    <section id="portfolio" class="sm:w-7/12 lg:w-8/12 mx-auto px-4 sm:px-0">
+        <h1 class="text-lightblue pt-16 text-center title">Latest work</h1>
+        <div class="flex flex-wrap justify-center items-center py-16 gap-4">
+            <!-- Row 1 -->
+            <!--BikeMate project-->
+            <div class="pf_layout" x-data="{ hover: false }">
+                <div @mouseenter="hover = true" @mouseleave="hover = false" class="relative">
+                    <img src="static/projects/bikemate-showcase.png" alt="BikeMate" class="pf_img">
+                    <div class="overlay" x-show="hover">
+                        <div class="overlay_text">
+                            <a href="bikemate.html">
+                                BikeMate
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Echelon project-->
+            <div class="pf_layout" x-data="{ hover: false }">
+                <div @mouseenter="hover = true" @mouseleave="hover = false" class="relative">
+                    <img src="static/projects/echelon_showcase_phone.png" alt="BikeMate" class="pf_img">
+                    <div class="overlay" x-show="hover">
+                        <div class="overlay_text">
+                            <a href="echelon.html">
+                                Echelon
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row 2 -->
+            <!--Bikekey project-->
+            <div class="pf_layout" x-data="{ hover: false }">
+                <div @mouseenter="hover = true" @mouseleave="hover = false" class="relative">
+                    <img src="static/projects/bikekey_bg.png" alt="BikeMate" class="pf_img">
+                    <div class="overlay" x-show="hover">
+                        <div class="overlay_text">
+                            <a href="bikekey.html">
+                                Bikekey
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Database project-->
+            <div class="pf_layout" x-data="{ hover: false }">
+                <div @mouseenter="hover = true" @mouseleave="hover = false" class="relative">
+                    <img src="static/projects/db_project.png" alt="BikeMate" class="pf_img">
+                    <div class="overlay" x-show="hover">
+                        <div class="overlay_text">
+                            <a href="database.html">
+                                Database
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Aeroglobe project-->
+            <div class="pf_layout" x-data="{ hover: false }">
+                <div @mouseenter="hover = true" @mouseleave="hover = false" class="relative">
+                    <img src="static/projects/aeroglobe_sec.png" alt="BikeMate" class="pf_img">
+                    <div class="overlay" x-show="hover">
+                        <div class="overlay_text">
+                            <a href="aeroglobe.html">
+                                Aeroglobe
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Illustrations project-->
+            <div class="pf_layout" x-data="{ hover: false }">
+                <div @mouseenter="hover = true" @mouseleave="hover = false" class="relative">
+                    <img src="static/projects/ux_project.png" alt="BikeMate" class="pf_img">
+                    <div class="overlay" x-show="hover">
+                        <div class="overlay_text">
+                            <a href="ux.html">
+                                Goal directed design
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Skills-->
+    <section class="bg-hero py-10 md:flex justify-center" id="skills">
+        <!--About-->
+        <div class="md:w-1/2 p-10">
+            <h2 class="text-vibrantgreen subtitle pb-10">About Me</h3>
+            <p class="text-lightblue bodytext">
+                I am a 2022 graduate from Zealand business school and discovered a passion for webdesign.
+                At first I was interested in design only, but coding caught my interest as I saw the many possiblities that it offers.
+                <br><br>
+                I first discovered HTML and CSS which really sparked an interest in a whole array of web dev related topics.
+                I therefore wanted to learn more and that is how I found KEA - Copenhagen school of Design and Technology.
+                During my time at KEA I also discovered a passion for UX and now focus on combining and creating solutions
+                that are intuitive and seemless for the user.
+                Addtionally, I enjoy working in Photoshop and Illustrator where I create web graphics
+                and other fun side projects.
+            </p>
+        </div>
+        <!-- Skills Container -->
+        <div class="md:w-1/3 p-10">
+            <h2 class="text-vibrantgreen subtitle text-center pb-10">Technologies I've been working with</h2>
+            <div class="skills_container skills_section relative grid grid-cols-2 gap-4">
+                <!-- Skill Item -->
+                <div class="skill_item">
+                    <span class="skill_name">• HTML</span>
+                    <span class="skill_level text-green-500">Proficient</span>
+                </div>
+                <hr class="line">
+                <div class="skill_item">
+                    <span class="skill_name">• CSS</span>
+                    <span class="skill_level text-green-500">Proficient</span>
+                </div>
+                <hr class="line">
+                <div class="skill_item">
+                    <span class="skill_name">• TailwindCSS</span>
+                    <span class="skill_level text-green-500">Beginner</span>
+                </div>
+                <hr class="line">
+                <div class="skill_item">
+                    <span class="skill_name">• AlpineJS</span>
+                    <span class="skill_level text-green-500">Intermediate</span>
+                </div>
+                <hr class="line">
+                <div class="skill_item">
+                    <span class="skill_name">• JavaScript</span>
+                    <span class="skill_level text-green-500">Intermediate</span>
+                </div>
+                <hr class="line">
+                <div class="skill_item">
+                    <span class="skill_name">• React</span>
+                    <span class="skill_level text-green-500">Beginner</span>
+                </div>
+                <hr class="line">
+                <div class="skill_item">
+                    <span class="skill_name">• Cypress</span>
+                    <span class="skill_level text-green-500">Beginner</span>
+                </div>
+                <hr class="line">
+                <div class="skill_item">
+                    <span class="skill_name">• PHP</span>
+                    <span class="skill_level text-green-500">Intermediate</span>
+                </div>
+                <hr class="line">
+                <div class="skill_item">
+                    <span class="skill_name">• Django</span>
+                    <span class="skill_level text-green-500">Intermediate</span>
+                </div>
+                <hr class="line">
+                <div class="skill_item">
+                    <span class="skill_name">• Flask</span>
+                    <span class="skill_level text-green-500">Intermediate</span>
+                </div>
+                <hr class="line">
+                <div class="skill_item">
+                    <span class="skill_name">• HTMX</span>
+                    <span class="skill_level text-green-500">Beginner</span>
+                </div>
+                <hr class="line">
+                <div class="skill_item">
+                    <span class="skill_name">• SQL</span>
+                    <span class="skill_level text-green-500">Proficient</span>
+                </div>
+                <hr class="line">
+                <div class="skill_item">
+                    <span class="skill_name">• Cypher</span>
+                    <span class="skill_level text-green-500">Intermediate</span>
+                </div>
+                <hr class="line">
+                <div class="skill_item">
+                    <span class="skill_name">• Neo4j</span>
+                    <span class="skill_level text-green-500">Beginner</span>
+                </div>
+                <hr class="line">
+                <div class="skill_item">
+                    <span class="skill_name">• phpMyAdmin</span>
+                    <span class="skill_level text-green-500">Intermediate</span>
+                </div>
+                <hr class="line">
+                <div class="skill_item">
+                    <span class="skill_name">• Docker</span>
+                    <span class="skill_level text-green-500">Intermediate</span>
+                </div>
+                <hr class="line">
+                <div class="skill_item">
+                    <span class="skill_name">• Github</span>
+                    <span class="skill_level text-green-500">Proficient</span>
+                </div>
+                <hr class="line">
+                <div class="skill_item">
+                    <span class="skill_name">• Git</span>
+                    <span class="skill_level text-green-500">Proficient</span>
+                </div>
+                <hr class="line">
+                <div class="skill_item">
+                    <span class="skill_name">• Illustrator</span>
+                    <span class="skill_level text-green-500">Intermediate</span>
+                </div>
+                <hr class="line">
+                <div class="skill_item">
+                    <span class="skill_name">• Photoshop</span>
+                    <span class="skill_level text-green-500">Intermediate</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Contact-->
+    <section class="text-center px-7" id="contact">
+        <h1 class="text-lightblue title pt-16 text-center">Get in touch👋</h1>
+        <p class="text-lightblue text-center mx-auto bodytext pt-5 sm:w-72">
+            If you're interested in my work, don't hesitate to reach out.<br><br>
+            Let's talk tech!
+        </p>
+        <div class="flex flex-col items-center justify-center py-8">
+            <a href="mailto:lauramediedk@gmail.com" class="rounded border-2 border-vibrantgreen text-vibrantgreen px-4 py-2 mt-4
+            font-medium text-lg font-Oswald">
+            Say hello <i class="fa-regular fa-paper-plane"></i></a>
+        </div>
+        <div class="inline-flex items-center justify-center w-full">
+            <hr class="w-64 h-px my-8 bg-vibrantgreen">
+            <span class="absolute px-3 text-darkblue bg-body -translate-x-1/2 left-1/2 font-Oswald text-2xl">or</span>
+        </div>
+        <div class="flex justify-center py-14 gap-4">
+            <a href="#">
+                <i class="fa-brands fa-github fa-2xl links_icon"></i>
+            </a>
+            <a href="#">
+                <i class="fa-brands fa-linkedin fa-2xl links_icon"></i>
+            </a>
+        </div>
+    </section>
+</body>
+</html>

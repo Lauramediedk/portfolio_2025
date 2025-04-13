@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://kit.fontawesome.com/660d3ed2ac.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="static/styles.css">
+    <title>Echelon | Laura Jacobsen</title>
+</head>
+<body>
+    <div>
+        <a href="index.html"><i class="fa-solid fa-chevron-left fa-xl backbtn"></i></a>
+    </div>
+    <section class="text-center m-auto py-8" x-data="{ activeImage: 1, showMore: false }">
+        <h1 class="title text-vibrantgreen text-4xl mb-8">Bikekey</h1>
+        <p class="text-lightblue mb-8 w-9/12 md:w-1/2 m-auto overflow-hidden md:overflow-visible" :class="{'max-h-56': !showMore, 'md:max-h-full': true}">
+            My internship at Bikekey was an incredibly fun and educational time, which contributed to my personal growth.
+            Here I got to work with technologies such as React, and got more comftable with writing and understanding Javascript.
+            I mostly worked on the frontend part but also did a little testing in cypress, where I got to write and run tests.
+            It was also during the internship that I got more comftable with using git, and learned about new commands and methods
+            to maintain clean, isolated code branches.
+            During the process, I worked in Zeplin which made the process of going from design til development, much smoother.
+            I also worked in Figma, when I got the opportunity of giving my take on designing a new feature for the platform.
+            <br><br>
+            Overall I gained a lot from the internship, which both gave me insight in the process of going from design to product delivery,
+            but it also bolstered my confidence in experimenting with code, and embracing creative problem-solving, when faced with technical challenges.
+        </p>
+        <!--Button to see more text on mobile-->
+        <button class="text-vibrantgreen pb-6 md:hidden" @click="showMore = !showMore">
+            <span x-text="showMore ? 'See Less' : 'See More'"></span>
+        </button>
+        <!-- Buttons for changing the image -->
+        <div class="flex flex-row justify-center gap-4 pb-6">
+            <button class="rounded-full h-3 w-3 focus:outline-none" :class="{ 'bg-vibrantgreen': activeImage === 1, 'bg-darkgrey': activeImage !== 1 }" @click="activeImage = 1"></button>
+            <button class="rounded-full h-3 w-3 focus:outline-none" :class="{ 'bg-vibrantgreen': activeImage === 2, 'bg-darkgrey': activeImage !== 2 }" @click="activeImage = 2"></button>
+        </div>
+        <div class="flex flex-wrap justify-center items-center md:w-2/5 mx-auto">
+            <div class="w-full md:flex md:items-center m-auto">
+                <div>
+                    <!-- Images that change when buttons are clicked -->
+                    <img x-show="activeImage === 1" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" src="static/projects/bikekey_sm_nobg.png" alt="BikeMate Feature 1" class="rounded">
+                    <img x-show="activeImage === 2" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" src="static/projects/bikekey_md_nobg.png" alt="BikeMate Feature 2" class="rounded">
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

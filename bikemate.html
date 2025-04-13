@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://kit.fontawesome.com/660d3ed2ac.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="static/styles.css">
+    <title>BikeMate | Laura Jacobsen</title>
+</head>
+<body>
+    <div>
+        <a href="index.html"><i class="fa-solid fa-chevron-left fa-xl backbtn"></i></a>
+    </div>
+    <section class="text-center m-auto py-8" x-data="{ activeImage: 1, showMore: false }">
+        <h1 class="title text-vibrantgreen text-4xl mb-4">BikeMate</h1>
+        <p class="text-lightblue mb-8 w-9/12 md:w-1/2 m-auto overflow-hidden md:overflow-visible" :class="{'max-h-56': !showMore, 'md:max-h-full': true}">
+            BikeMate is an innovative social biking application, created from a spark of inspiration during my internship at Bikekey.
+            The challenge of encouraging more people to cycle piqued my interest, leading me to develop BikeMate for my final project at KEA.
+            Utilizing technologies like Flask, Alpine.js, and HTMX, I created a platform that's both robust and user-friendly.
+            The product is based on research I gathered through surveys which included questions about social media patterns,
+            motivational drivers, and user habits. This data-driven approach has been effective in tailoring the web app's design
+            to truly resonate with its target audience.
+            Before developing the webapp I made sure to organise the requirements
+            with a requirements specification, and structured my work in trello, with an approach similar to kanban.
+            <br><br>
+            BikeMate aims to transform cycling into a communal activity.
+            It connects users, encouraging more frequent cycling through features like event creation
+            and a friend system that keeps users informed about their friends cycling activities.
+        </p>
+        <!--Button to see more text on mobile-->
+        <button class="text-vibrantgreen pb-6 md:hidden" @click="showMore = !showMore">
+            <span x-text="showMore ? 'See Less' : 'See More'"></span>
+        </button>
+        <!-- Buttons for changing the image -->
+        <div class="flex flex-row justify-center gap-4 pb-6">
+            <button class="rounded-full h-3 w-3 focus:outline-none" :class="{ 'bg-vibrantgreen': activeImage === 1, 'bg-darkgrey': activeImage !== 1 }" @click="activeImage = 1"></button>
+            <button class="rounded-full h-3 w-3 focus:outline-none" :class="{ 'bg-vibrantgreen': activeImage === 2, 'bg-darkgrey': activeImage !== 2 }" @click="activeImage = 2"></button>
+        </div>
+        <div class="flex flex-wrap justify-center items-center md:w-2/5 mx-auto">
+            <div class="w-full md:flex md:items-center m-auto">
+                <div>
+                    <!-- Images that change when buttons are clicked -->
+                    <img x-show="activeImage === 1" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" src="static/projects/bikemate_sm_nobg.png" alt="BikeMate Feature 1" class="rounded">
+                    <img x-show="activeImage === 2" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" src="static/projects/bikemate_md_nobg.png" alt="BikeMate Feature 2" class="rounded">
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
